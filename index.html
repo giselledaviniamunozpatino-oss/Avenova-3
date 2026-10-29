@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVENOVA | Nutre Tu Bienestar</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --burgundy: #721c24;
+            --accent-red: #800020;
+            --bg-cream: #fbf9f6;
+            --text-dark: #2c2c2c;
+            --white: #ffffff;
+            --card-bg: #ffffff;
+            --border-soft: #f0e6e0;
+            --green-btn: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            background-image: radial-gradient(#e6dfd5 0.75px, transparent 0.75px);
+            background-size: 15px 15px;
+        }
+
+        /* Header Estilo Elegante */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-circle {
+            width: 42px;
+            height: 42px;
+            background: var(--burgundy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 8px rgba(114, 28, 36, 0.3);
+        }
+
+        .logo-text h1 {
+            color: var(--burgundy);
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            font-size: 0.65rem;
+            color: #558b2f;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .menu-btn {
+            background: var(--burgundy);
+            color: var(--white);
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(114, 28, 36, 0.2);
+        }
+
+        .nav-dropdown {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: var(--white);
+            width: 240px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            list-style: none;
+            padding: 10px 0;
+            border: 1px solid var(--border-soft);
+            z-index: 1001;
+        }
+
+        .nav-dropdown.active {
+            display: block;
+        }
+
+        .nav-dropdown li a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .nav-dropdown li a:hover {
+            background: #fdf2f4;
+            color: var(--burgundy);
+        }
+
+        /* Contenido Principal */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px 40px 20px;
+        }
+
+        .badge-school {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fdf2f4;
+            border: 1px solid #f5c6cb;
+            color: var(--burgundy);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .main-hero h2 {
+            font-size: 2.3rem;
+            line-height: 1.25;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .main-hero h2 span {
+            color: var(--burgundy);
+            border-bottom: 3px solid var(--burgundy);
+        }
+
+        .main-hero p {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Tarjetas de características */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-soft);
+            padding: 15px 10px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .feature-card .icon-box {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-card h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Secciones */
+        .section-box {
+            margin-bottom: 40px;
+        }
+
+        .section-box h3 {
+            font-size: 1.5rem;
+            color: var(--burgundy);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--border-soft);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .info-card p {
+            margin-bottom: 10px;
+        }
+
+        /* Productos / Variedades */
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--border-soft);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
+
+        .tag-sabor {
+            display: inline-block;
+            background: #fff3cd;
+            color: #856404;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .product-card h4 {
+            color: var(--burgundy);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .product-details {
+            font-size: 0.92rem;
+            color: #555;
+            margin: 15px 0;
+            background: #fdfaf7;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 3px solid var(--burgundy);
+        }
+
+        .product-details p {
+            margin-bottom: 5px;
+        }
+
+        /* Simulador / Calculadora Interactiva */
+        .calc-box {
+            background: var(--white);
+            border: 1px solid var(--border-soft);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
+        }
+
+        .calc-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .calc-item:last-child {
+            border-bottom: none;
+        }
+
+        .counter-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-count {
+            background: var(--burgundy);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .btn-count:active {
+            transform: scale(0.95);
+        }
+
+        .count-display {
+            font-weight: 700;
+            font-size: 1.1rem;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .total-section {
+            background: #fdf2f4;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+            border: 1px solid #f5c6cb;
+        }
+
+        .total-section h4 {
+            color: var(--burgundy);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .btn-whatsapp-order {
+            display: block;
+            width: 100%;
+            background: var(--green-btn);
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp-order:hover {
+            background: #1ebe57;
+        }
+
+        .btn-clear {
+            background: transparent;
+            border: none;
+            color: #777;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: block;
+            margin: 10px auto 0 auto;
+        }
+
+        /* Mapa y Contacto */
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .info-item i {
+            color: var(--burgundy);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .map-container {
+            margin-top: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-soft);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f2ece4;
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+
+        @media(max-width: 480px) {
+            .main-hero h2 {
+                font-size: 1.9rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar con menú desplegable -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo-container">
+                <div class="logo-circle">
+                    <i class="fas fa-cookie-bite"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Avenova</h1>
+                    <span>Nutre tu bienestar</span>
+                </div>
+            </a>
+            <button class="menu-btn" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-dropdown" id="nav-dropdown">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Quiénes Somos</a></li>
+                <li><a href="#catalogo">Catálogo y Pedidos</a></li>
+                <li><a href="#calculadora">Simulador de Compra</a></li>
+                <li><a href="#contacto">Ubicación y Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Portada Principal -->
+        <section id="inicio" class="main-hero">
+            <div class="badge-school">
+                <i class="fas fa-graduation-cap"></i> Emprendimiento Escolar Inclusivo
+            </div>
+            <h2>Galletas de Avena con <span>Plantas Medicinales</span></h2>
+            <p>Creadas especialmente para personas con intolerancia a la lactosa y amantes del bienestar. Una fusión artesanal de avena nutritiva, miel pura y la frescura digestiva de la manzanilla, menta y cedrón.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box">🥛❌</div>
+                    <h4>100% Sin Lactosa</h4>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box">🌿🌾</div>
+                    <h4>Plantas Naturales</h4>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box">📦♻️</div>
+                    <h4>Empaque Kraft Eco</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiénes Somos -->
+        <section id="nosotros" class="section-box">
+            <h3>Quiénes Somos</h3>
+            <div class="info-card">
+                <p><strong>Detrás de AVENOVA:</strong> Iniciativa emprendedora nacida en la Unidad Educativa María Auxiliadora de La Paz, Bolivia, orientada a la contabilidad, innovación en alimentos e inclusión nutricional.</p>
+                <p><strong>Equipo Emprendedor:</strong> Desarrollado por las estudiantes Natalia Jhovana Cruz Sanchez, Giselle Davinia Muñoz Patiño y Vania Quisbert Maldonado[span_6](start_span)[span_6](end_span).</p>
+                <p><strong>Asesoría Docente:</strong> Prof. Rosa Virginia Uturunco Lopez (Contabilidad) y Lic. Mateo Gomez (Orientación Vocacional)[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span).</p>
+            </div>
+        </section>
+
+        <!-- Catálogo de Variedades -->
+        <section id="catalogo" class="section-box">
+            <h3>Catálogo de Variedades</h3>
+            
+            <!-- Manzanilla -->
+            <div class="product-card">
+                <span class="tag-sabor">Digestivo Suave</span>
+                <h4>Manzanilla</h4>
+                <p>Galleta crujiente de avena infusionada con flor de manzanilla seca y triturada. Aporta una sensación reconfortante y promueve la buena digestión[span_9](start_span)[span_9](end_span).</p>
+                <div class="product-details">
+                    <p><strong>Presentación:</strong> Bolsa Kraft (6 unidades)[span_10](start_span)[span_10](end_span)</p>
+                    <p><strong>Sabor predominante:</strong> Floral y dulzor de miel[span_11](start_span)[span_11](end_span)</p>
+                    <p><strong>Precio unitario:</strong> Bs 17.60[span_12](start_span)[span_12](end_span)</p>
+                </div>
+                <a href="https://wa.me/59165638340?text=Hola%20AVENOVA,%20deseo%20pedir%201%20bolsa%20de%20galletas%20de%20Manzanilla." target="_blank" class="btn-whatsapp-order">
+                    <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                </a>
+            </div>
+
+            <!-- Menta -->
+            <div class="product-card">
+                <span class="tag-sabor" style="background:#d4edda; color:#155724;">Frescura Vital</span>
+                <h4>Menta Fresca</h4>
+                <p>Elaborada con hojas de menta natural que otorgan una nota fresca única. Perfecta como snack de media mañana o recarga de energía durante el día[span_13](start_span)[span_13](end_span).</p>
+                <div class="product-details">
+                    <p><strong>Presentación:</strong> Bolsa Kraft (6 unidades)[span_14](start_span)[span_14](end_span)</p>
+                    <p><strong>Sabor predominante:</strong> Herbal fresco y avena[span_15](start_span)[span_15](end_span)</p>
+                    <p><strong>Precio unitario:</strong> Bs 17.60[span_16](start_span)[span_16](end_span)</p>
+                </div>
+                <a href="https://wa.me/59165638340?text=Hola%20AVENOVA,%20deseo%20pedir%201%20bolsa%20de%20galletas%20de%20Menta." target="_blank" class="btn-whatsapp-order">
+                    <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                </a>
+            </div>
+
+            <!-- Cedrón -->
+            <div class="product-card">
+                <span class="tag-sabor" style="background:#e2f0d9; color:#274e13;">Aroma Cítrico</span>
+                <h4>Cedrón Cítrico</h4>
+                <p>Galleta de textura crujiente con toque cítrico característico del cedrón. Ayuda a reducir la pesadez y brindar un momento de calma[span_17](start_span)[span_17](end_span).</p>
+                <div class="product-details">
+                    <p><strong>Presentación:</strong> Bolsa Kraft (6 unidades)[span_18](start_span)[span_18](end_span)</p>
+                    <p><strong>Sabor predominante:</strong> Cítrico suave y tostado[span_19](start_span)[span_19](end_span)</p>
+                    <p><strong>Precio unitario:</strong> Bs 17.60[span_20](start_span)[span_20](end_span)</p>
+                </div>
+                <a href="https://wa.me/59165638340?text=Hola%20AVENOVA,%20deseo%20pedir%201%20bolsa%20de%20galletas%20de%20Cedrón." target="_blank" class="btn-whatsapp-order">
+                    <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <!-- Simulador / Calculadora de Compra Interactiva -->
+        <section id="calculadora" class="section-box">
+            <h3>Calculadora de Pedidos AVENOVA</h3>
+            <div class="calc-box">
+                <p style="font-size:0.9rem; color:#666; margin-bottom:20px;">Selecciona la cantidad de bolsitas por variedad. El precio oficial por paquete de 6 unidades es de Bs 17.60[span_21](start_span)[span_21](end_span).</p>
+
+                <!-- Manzanilla -->
+                <div class="calc-item">
+                    <div>
+                        <strong>Manzanilla</strong><br>
+                        <small style="color:#777;">Bs 17.60 c/u</small>
+                    </div>
+                    <div class="counter-controls">
+                        <button class="btn-count" onclick="cambiarCantidad('manzanilla', -1)">-</button>
+                        <span class="count-display" id="qty-manzanilla">0</span>
+                        <button class="btn-count" onclick="cambiarCantidad('manzanilla', 1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Menta -->
+                <div class="calc-item">
+                    <div>
+                        <strong>Menta Fresca</strong><br>
+                        <small style="color:#777;">Bs 17.60 c/u</small>
+                    </div>
+                    <div class="counter-controls">
+                        <button class="btn-count" onclick="cambiarCantidad('menta', -1)">-</button>
+                        <span class="count-display" id="qty-menta">0</span>
+                        <button class="btn-count" onclick="cambiarCantidad('menta', 1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Cedrón -->
+                <div class="calc-item">
+                    <div>
+                        <strong>Cedrón Cítrico</strong><br>
+                        <small style="color:#777;">Bs 17.60 c/u</small>
+                    </div>
+                    <div class="counter-controls">
+                        <button class="btn-count" onclick="cambiarCantidad('cedron', -1)">-</button>
+                        <span class="count-display" id="qty-cedron">0</span>
+                        <button class="btn-count" onclick="cambiarCantidad('cedron', 1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Total y Enviar -->
+                <div class="total-section">
+                    <h4>TOTAL ESTIMADO: <span id="total-precio">Bs 0.00</span></h4>
+                    <p style="font-size:0.85rem; color:#555;" id="total-unidades">0 bolsitas en total</p>
+                </div>
+
+                <button onclick="enviarPedidoCalculadora()" class="btn-whatsapp-order">
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+                </button>
+                <button onclick="limpiarCalculadora()" class="btn-clear">Limpiar pedido</button>
+            </div>
+        </section>
+
+        <!-- Ubicación y Contacto -->
+        <section id="contacto" class="section-box">
+            <h3>Ubicación y Contacto</h3>
+            <div class="info-card">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div><strong>Centro Paceño - El Prado:</strong> Avenida 16 de Julio, La Paz - Bolivia[span_22](start_span)[span_22](end_span). Ubicación estratégica con alta afluencia.</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div><strong>Teléfono / WhatsApp:</strong> +591 65638340[span_23](start_span)[span_23](end_span)</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div><strong>Correo:</strong> contacto@avenova-bolivia.com[span_24](start_span)[span_24](end_span)</div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.323565512!2d-68.132!3d-16.500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDMwJzAwLjAiUyA2OMKwMzUnNTUuMCJX!5e0!3m2!1ses!2sbo!4v1650000000000!5m2!1ses!2sbo" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 AVENOVA. Galletas saludables a base de plantas medicinales y avena. La Paz - Bolivia.</p>
+    </footer>
+
+    <!-- Scripts Interactivos -->
+    <script>
+        // Menú desplegable hamburguesa
+        const menuToggle = document.getElementById('menu-toggle');
+        const navDropdown = document.getElementById('nav-dropdown');
+
+        menuToggle.addEventListener('click', () => {
+            navDropdown.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-dropdown a').forEach(link => {
+            link.addEventListener('click', () => {
+                navDropdown.classList.remove('active');
+            });
+        });
+
+        // Lógica de la Calculadora de Pedidos Interactiva
+        let cantidades = {
+            manzanilla: 0,
+            menta: 0,
+            cedron: 0
+        };
+        const precioUnitario = 17.60;
+
+        function cambiarCantidad(sabor, cambio) {
+            cantidades[sabor] += cambio;
+            if (cantidades[sabor] < 0) {
+                cantidades[sabor] = 0;
+            }
+            document.getElementById(`qty-${sabor}`).innerText = cantidades[sabor];
+            actualizarTotales();
+        }
+
+        function actualizarTotales() {
+            let totalBolsas = cantidades.manzanilla + cantidades.menta + cantidades.cedron;
+            let precioTotal = totalBolsas * precioUnitario;
+
+            document.getElementById('total-precio').innerText = `Bs ${precioTotal.toFixed(2)}`;
+            document.getElementById('total-unidades').innerText = `${totalBolsas} bolsitas en total (${totalBolsas * 6} galletas)`;
+        }
+
+        function limpiarCalculadora() {
+            cantidades = { manzanilla: 0, menta: 0, cedron: 0 };
+            document.getElementById('qty-manzanilla').innerText = 0;
+            document.getElementById('qty-menta').innerText = 0;
+            document.getElementById('qty-cedron').innerText = 0;
+            actualizarTotales();
+        }
+
+        function enviarPedidoCalculadora() {
+            let m = cantidades.manzanilla;
+            let me = cantidades.menta;
+            let c = cantidades.cedron;
+            let totalBolsas = m + me + c;
+
+            if (totalBolsas === 0) {
+                alert("Por favor selecciona al menos una bolsita de galletas para realizar tu pedido.");
+                return;
+            }
+
+            let precioTotal = totalBolsas * precioUnitario;
+            let mensaje = `Hola AVENOVA, deseo realizar el siguiente pedido:%0A`;
+            if (m > 0) mensaje += `- Manzanilla: ${m} bolsa(s)%0A`;
+            if (me > 0) mensaje += `- Menta: ${me} bolsa(s)%0A`;
+            if (c > 0) mensaje += `- Cedrón: ${c} bolsa(s)%0A`;
+            mensaje += `%0ATotal de bolsas: ${totalBolsas}%0APrecio total estimado: Bs ${precioTotal.toFixed(2)}`;
+
+            let url = `https://wa.me/59165638340?text=${mensaje}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
