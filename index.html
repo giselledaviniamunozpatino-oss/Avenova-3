@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avenova - Galletas de Avena con Plantas Medicinales</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #faf6f0;
+            /* Patron de puntos idéntico al diseño de referencia */
+            background-image: radial-gradient(#d6cbbd 1.1px, transparent 1.1px);
+            background-size: 20px 20px;
+        }
+        
+        .font-serif-custom {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .text-brand {
+            color: #a81c42;
+        }
+        
+        .bg-brand {
+            background-color: #a81c42;
+        }
+        
+        .border-brand {
+            border-color: #a81c42;
+        }
+
+        .card-custom {
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(229, 221, 210, 0.6);
+        }
+
+        /* Estilo del sub-rayado debajo de "Plantas Medicinales" */
+        .underline-accent {
+            position: relative;
+            display: inline-block;
+        }
+        .underline-accent::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #c07a36;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-[#faf6f0]/90 backdrop-blur-md border-b border-stone-200/60 px-4 py-3">
+        <div class="max-w-xl mx-auto flex justify-between items-center">
+            <!-- Logo estilo captura -->
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white shadow-md">
+                    <i class="fa-solid fa-cookie-bite text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif-custom font-bold text-2xl text-brand leading-none tracking-tight">Avenova</h1>
+                    <p class="text-[10px] tracking-widest font-bold text-stone-500 uppercase mt-0.5">Nutre tu bienestar</p>
+                </div>
+            </div>
+
+            <!-- Botón Menú Desplegable -->
+            <button id="menuBtn" class="w-12 h-12 bg-brand text-white rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable (Dropdown) -->
+        <nav id="mobileMenu" class="hidden max-w-xl mx-auto mt-3 bg-white rounded-2xl p-4 shadow-xl border border-stone-100 flex flex-col gap-2">
+            <a href="#inicio" onclick="toggleMenu()" class="py-2.5 px-4 rounded-xl hover:bg-rose-50 text-stone-700 font-semibold flex items-center gap-3">
+                <i class="fa-solid fa-house text-brand"></i> Inicio
+            </a>
+            <a href="#sabores" onclick="toggleMenu()" class="py-2.5 px-4 rounded-xl hover:bg-rose-50 text-stone-700 font-semibold flex items-center gap-3">
+                <i class="fa-solid fa-cookie text-brand"></i> Variedades
+            </a>
+            <a href="#calculadora" onclick="toggleMenu()" class="py-2.5 px-4 rounded-xl hover:bg-rose-50 text-stone-700 font-semibold flex items-center gap-3">
+                <i class="fa-solid fa-calculator text-brand"></i> Hacer Pedido
+            </a>
+            <a href="#nosotros" onclick="toggleMenu()" class="py-2.5 px-4 rounded-xl hover:bg-rose-50 text-stone-700 font-semibold flex items-center gap-3">
+                <i class="fa-solid fa-users text-brand"></i> Proyecto y Equipo
+            </a>
+            <a href="#ubicacion" onclick="toggleMenu()" class="py-2.5 px-4 rounded-xl hover:bg-rose-50 text-stone-700 font-semibold flex items-center gap-3">
+                <i class="fa-solid fa-location-dot text-brand"></i> Ubicación
+            </a>
+        </nav>
+    </header>
+
+    <main class="flex-grow px-4 py-6 max-w-xl mx-auto w-full space-y-8" id="inicio">
+
+        <!-- Hero Section -->
+        <section class="text-center pt-2">
+            <h2 class="font-serif-custom text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-4">
+                Galletas de Avena con <span class="underline-accent text-brand">Plantas Medicinales</span>
+            </h2>
+            <p class="text-stone-600 text-base leading-relaxed max-w-md mx-auto mb-6">
+                Creadas especialmente para personas con <strong class="text-brand font-semibold">intolerancia a la lactosa</strong> y amantes del bienestar. Una fusión artesanal de avena nutritiva, miel pura y la frescura digestiva de la manzanilla, menta y cedrón.
+            </p>
+
+            <!-- Badges destacadas estilo referencia -->
+            <div class="grid grid-cols-3 gap-2 max-w-md mx-auto mb-6">
+                <div class="bg-white p-3 rounded-2xl border border-stone-200/60 shadow-sm text-center flex flex-col items-center justify-center">
+                    <span class="text-2xl mb-1">🥛❌</span>
+                    <span class="text-[11px] font-bold text-stone-700 leading-tight">100% Sin Lactosa</span>
+                </div>
+                <div class="bg-white p-3 rounded-2xl border border-stone-200/60 shadow-sm text-center flex flex-col items-center justify-center">
+                    <span class="text-2xl mb-1">🌿🌾</span>
+                    <span class="text-[11px] font-bold text-stone-700 leading-tight">Plantas Naturales</span>
+                </div>
+                <div class="bg-white p-3 rounded-2xl border border-stone-200/60 shadow-sm text-center flex flex-col items-center justify-center">
+                    <span class="text-2xl mb-1">📦♻️</span>
+                    <span class="text-[11px] font-bold text-stone-700 leading-tight">Empaque Kraft Eco</span>
+                </div>
+            </div>
+
+            <!-- Botones de Acción Rápidos -->
+            <div class="flex gap-3 justify-center">
+                <a href="#calculadora" class="bg-brand text-white font-bold py-3.5 px-6 rounded-2xl shadow-md hover:bg-rose-800 transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping"></i> Pedir Paquete (Bs 8.00)
+                </a>
+                <a href="#nosotros" class="bg-white border border-stone-200 text-stone-700 font-semibold py-3.5 px-5 rounded-2xl hover:bg-stone-50 transition-colors">
+                    Proyecto <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Catálogo de Sabores -->
+        <section id="sabores" class="space-y-6 pt-4">
+            <div class="text-center">
+                <span class="bg-rose-100 text-brand text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Catálogo de Variedades</span>
+                <h3 class="font-serif-custom text-3xl font-bold text-slate-900 mt-2">Tres Sabores, Tres Beneficios</h3>
+                <p class="text-xs text-stone-500 mt-1">Cada bolsita contiene 6 galletas artesanales por <strong>8 Bs</strong></p>
+            </div>
+
+            <!-- Tarjeta Menta -->
+            <div class="card-custom p-6 text-center space-y-4">
+                <div class="w-20 h-20 bg-emerald-600 rounded-full mx-auto flex items-center justify-center text-white text-3xl shadow-lg">
+                    🌿
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-rose-800 uppercase tracking-wider bg-rose-50 px-3 py-1 rounded-full">Sabor Revitalizante</span>
+                    <h4 class="font-serif-custom text-2xl font-bold text-slate-900 mt-2">Variedad Menta Fresca</h4>
+                </div>
+                <p class="text-sm text-stone-600">Hojas seleccionadas de menta natural que otorgan una agradable frescura herbal en cada mordisco.</p>
+                <div class="bg-stone-50 border border-stone-200/80 rounded-xl p-2.5 text-xs text-stone-600 font-medium">
+                    Empaque Kraft Biodegradable • 6 Galletas por bolsa
+                </div>
+            </div>
+
+            <!-- Tarjeta Manzanilla -->
+            <div class="card-custom p-6 text-center space-y-4">
+                <div class="w-20 h-20 bg-amber-400 rounded-full mx-auto flex items-center justify-center text-white text-3xl shadow-lg">
+                    🌼
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-amber-800 uppercase tracking-wider bg-amber-50 px-3 py-1 rounded-full">Digestivo Suave</span>
+                    <h4 class="font-serif-custom text-2xl font-bold text-slate-900 mt-2">Variedad Manzanilla</h4>
+                </div>
+                <p class="text-sm text-stone-600">Flor de manzanilla triturada que brinda un aroma delicado y calma la digestión estomacal.</p>
+                <div class="bg-stone-50 border border-stone-200/80 rounded-xl p-2.5 text-xs text-stone-600 font-medium">
+                    Empaque Kraft Biodegradable • 6 Galletas por bolsa
+                </div>
+            </div>
+
+            <!-- Tarjeta Cedrón -->
+            <div class="card-custom p-6 text-center space-y-4">
+                <div class="w-20 h-20 bg-lime-500 rounded-full mx-auto flex items-center justify-center text-white text-3xl shadow-lg">
+                    🌱
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-lime-800 uppercase tracking-wider bg-lime-50 px-3 py-1 rounded-full">Alivio y Calma</span>
+                    <h4 class="font-serif-custom text-2xl font-bold text-slate-900 mt-2">Variedad Cedrón</h4>
+                </div>
+                <p class="text-sm text-stone-600">Fragancia cítrica natural y suave que promueve una sensación reconfortante tras cada comida.</p>
+                <div class="bg-stone-50 border border-stone-200/80 rounded-xl p-2.5 text-xs text-stone-600 font-medium">
+                    Empaque Kraft Biodegradable • 6 Galletas por bolsa
+                </div>
+            </div>
+        </section>
+
+        <!-- CALCULADORA DE PEDIDOS INTERACTIVA -->
+        <section id="calculadora" class="pt-4">
+            <div class="card-custom p-6 border-2 border-brand/20 shadow-xl">
+                <div class="text-center mb-6">
+                    <span class="bg-brand text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Hacer Pedido</span>
+                    <h3 class="font-serif-custom text-3xl font-bold text-slate-900 mt-2">Calculadora de Pedidos</h3>
+                    <p class="text-xs text-stone-500 mt-1">Selecciona la cantidad de paquetes por variedad (<strong>Bs 8.00 por paquete de 6 galletas</strong>)</p>
+                </div>
+
+                <!-- Lista de selección de sabores -->
+                <div class="space-y-4 mb-6">
+                    
+                    <!-- Menta -->
+                    <div class="flex items-center justify-between p-3.5 bg-stone-50 rounded-2xl border border-stone-200">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🌿</span>
+                            <div>
+                                <h5 class="font-bold text-stone-800 text-sm">Menta Fresca</h5>
+                                <p class="text-xs text-stone-500">6 galletas • 8 Bs</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateQty('menta', -1)" class="w-8 h-8 rounded-xl bg-white border border-stone-300 flex items-center justify-center text-stone-700 font-bold active:bg-stone-100 text-lg">-</button>
+                            <span id="qty-menta" class="w-6 text-center font-bold text-stone-800 text-base">0</span>
+                            <button onclick="updateQty('menta', 1)" class="w-8 h-8 rounded-xl bg-brand text-white flex items-center justify-center font-bold active:bg-rose-800 text-lg">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Manzanilla -->
+                    <div class="flex items-center justify-between p-3.5 bg-stone-50 rounded-2xl border border-stone-200">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🌼</span>
+                            <div>
+                                <h5 class="font-bold text-stone-800 text-sm">Manzanilla</h5>
+                                <p class="text-xs text-stone-500">6 galletas • 8 Bs</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateQty('manzanilla', -1)" class="w-8 h-8 rounded-xl bg-white border border-stone-300 flex items-center justify-center text-stone-700 font-bold active:bg-stone-100 text-lg">-</button>
+                            <span id="qty-manzanilla" class="w-6 text-center font-bold text-stone-800 text-base">0</span>
+                            <button onclick="updateQty('manzanilla', 1)" class="w-8 h-8 rounded-xl bg-brand text-white flex items-center justify-center font-bold active:bg-rose-800 text-lg">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Cedrón -->
+                    <div class="flex items-center justify-between p-3.5 bg-stone-50 rounded-2xl border border-stone-200">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🌱</span>
+                            <div>
+                                <h5 class="font-bold text-stone-800 text-sm">Cedrón</h5>
+                                <p class="text-xs text-stone-500">6 galletas • 8 Bs</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateQty('cedron', -1)" class="w-8 h-8 rounded-xl bg-white border border-stone-300 flex items-center justify-center text-stone-700 font-bold active:bg-stone-100 text-lg">-</button>
+                            <span id="qty-cedron" class="w-6 text-center font-bold text-stone-800 text-base">0</span>
+                            <button onclick="updateQty('cedron', 1)" class="w-8 h-8 rounded-xl bg-brand text-white flex items-center justify-center font-bold active:bg-rose-800 text-lg">+</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Resumen de Costos -->
+                <div class="bg-rose-50/70 rounded-2xl p-4 border border-rose-100 space-y-2 mb-6">
+                    <div class="flex justify-between text-xs text-stone-600">
+                        <span>Total paquetes:</span>
+                        <span id="total-packs" class="font-bold">0 paquetes</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-stone-600">
+                        <span>Total galletas:</span>
+                        <span id="total-cookies" class="font-bold">0 galletas</span>
+                    </div>
+                    <div class="h-px bg-rose-200/60 my-1"></div>
+                    <div class="flex justify-between text-base font-bold text-slate-900">
+                        <span>Monto Total:</span>
+                        <span id="total-price" class="text-brand text-xl">0.00 Bs</span>
+                    </div>
+                </div>
+
+                <!-- Botón de Envío a WhatsApp -->
+                <button onclick="sendOrderWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-2xl shadow-lg flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i> Enviar Pedido por WhatsApp
+                </button>
+            </div>
+        </section>
+
+        <!-- Información Institucional y Equipo -->
+        <section id="nosotros" class="space-y-6 pt-4">
+            <div class="text-center">
+                <h3 class="font-serif-custom text-3xl font-bold text-slate-900">Detrás de AVENOVA</h3>
+                <p class="text-sm text-stone-600 mt-2 leading-relaxed">
+                    Iniciativa emprendedora nacida en la <strong>Unidad Educativa María Auxiliadora de La Paz, Bolivia</strong>, orientada a la contabilidad, innovación en alimentos e inclusión nutricional.
+                </p>
+            </div>
+
+            <div class="card-custom p-6 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-100 text-brand flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-slate-900">Equipo Emprendedor</h4>
+                </div>
+                <p class="text-xs text-stone-500">Desarrollado con dedicación por las estudiantes:</p>
+                <ul class="space-y-2 text-sm font-semibold text-stone-700">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i> Natalia Jhovana Cruz Sanchez
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i> Giselle Davinia Muñoz Patiño
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i> Vania Quisbert Maldonado
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-custom p-6 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="font-bold text-xl text-slate-900">Asesoría Docente</h4>
+                </div>
+                <div class="space-y-3 text-sm text-stone-700">
+                    <div>
+                        <span class="block text-xs font-bold text-stone-400 uppercase">Docente de Contabilidad</span>
+                        <p class="font-semibold text-stone-800">Prof. Rosa Virginia Uturunco Lopez</p>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-bold text-stone-400 uppercase">Orientación Vocacional</span>
+                        <p class="font-semibold text-stone-800">Lic. Mateo Gomez</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filosofía -->
+            <div class="card-custom p-6 space-y-4">
+                <h4 class="font-serif-custom text-2xl font-bold text-brand">Filosofía Corporativa</h4>
+                <div class="space-y-3">
+                    <div class="p-3 bg-stone-50 rounded-xl">
+                        <strong class="text-sm font-bold text-slate-900 block mb-1">🎯 Misión</strong>
+                        <p class="text-xs text-stone-600">Elaborar y comercializar galletas saludables libres de leche a base de avena y plantas medicinales, brindando una alternativa de calidad para personas intolerantes a la lactosa y público general.</p>
+                    </div>
+                    <div class="p-3 bg-stone-50 rounded-xl">
+                        <strong class="text-sm font-bold text-slate-900 block mb-1">🌟 Visión</strong>
+                        <p class="text-xs text-stone-600">Ser una marca reconocida en Bolivia por ofrecer snacks saludables libres de leche, destacándonos por la innovación, calidad e inclusión alimentaria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ubicación y Contacto -->
+        <section id="ubicacion" class="card-custom p-6 space-y-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-rose-100 text-brand flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xl text-slate-900">Ubicación y Entregas</h4>
+                    <p class="text-xs text-stone-500">Punto estratégico comercial</p>
+                </div>
+            </div>
+            
+            <p class="text-sm text-stone-700">
+                <strong>Dirección:</strong> Avenida 16 de Julio (El Prado), La Paz, Bolivia.
+            </p>
+            <p class="text-xs text-stone-500">
+                Punto central de atención con cobertura comercial enfocada en la Zona Centro y Zona Sur de La Paz.
+            </p>
+
+            <a href="https://wa.me/59165638340?text=Hola%20Avenova,%20quisiera%20consultar%20sobre%20las%20entregas%20en%20El%20Prado" target="_blank" class="block text-center bg-stone-900 text-white font-semibold py-3 rounded-xl hover:bg-black transition-colors text-sm">
+                <i class="fa-brands fa-whatsapp mr-2 text-emerald-400"></i> Contactar al +591 65638340
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 text-center py-6 px-4 text-xs mt-8">
+        <p class="font-serif-custom text-base text-stone-200 mb-1">Avenova - Nutre tu bienestar</p>
+        <p>© 2026 AVENOVA S.R.L. • U.E. María Auxiliadora</p>
+        <p class="mt-2 text-[10px] text-stone-500">La Paz - Bolivia</p>
+    </footer>
+
+    <!-- Script de Interacción y Calculadora -->
+    <script>
+        // Menú móvil
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('menuBtn').addEventListener('click', toggleMenu);
+
+        // Lógica de Calculadora de Pedidos
+        const PRICE_PER_PACK = 8.00; // Precio por paquete de 6 galletas
+        const quantities = {
+            menta: 0,
+            manzanilla: 0,
+            cedron: 0
+        };
+
+        function updateQty(flavor, change) {
+            if (quantities[flavor] + change >= 0) {
+                quantities[flavor] += change;
+                document.getElementById(`qty-${flavor}`).innerText = quantities[flavor];
+                calculateTotal();
+            }
+        }
+
+        function calculateTotal() {
+            const totalPacks = quantities.menta + quantities.manzanilla + quantities.cedron;
+            const totalCookies = totalPacks * 6;
+            const totalPrice = totalPacks * PRICE_PER_PACK;
+
+            document.getElementById('total-packs').innerText = `${totalPacks} paquete${totalPacks !== 1 ? 's' : ''}`;
+            document.getElementById('total-cookies').innerText = `${totalCookies} galleta${totalCookies !== 1 ? 's' : ''}`;
+            document.getElementById('total-price').innerText = `${totalPrice.toFixed(2)} Bs`;
+        }
+
+        function sendOrderWhatsApp() {
+            const totalPacks = quantities.menta + quantities.manzanilla + quantities.cedron;
+            
+            if (totalPacks === 0) {
+                alert('Por favor agrega al menos 1 paquete a tu pedido.');
+                return;
+            }
+
+            const totalPrice = totalPacks * PRICE_PER_PACK;
+            
+            let message = `¡Hola Avenova! 🍪 Quisiera realizar el siguiente pedido:\n\n`;
+            if (quantities.menta > 0) message += `• Menta Fresca: ${quantities.menta} paquete(s) (${quantities.menta * 6} galletas)\n`;
+            if (quantities.manzanilla > 0) message += `• Manzanilla: ${quantities.manzanilla} paquete(s) (${quantities.manzanilla * 6} galletas)\n`;
+            if (quantities.cedron > 0) message += `• Cedrón: ${quantities.cedron} paquete(s) (${quantities.cedron * 6} galletas)\n`;
+            
+            message += `\n📦 Total paquetes: ${totalPacks}`;
+            message += `\n💰 Total a pagar: ${totalPrice.toFixed(2)} Bs`;
+            message += `\n📍 Entrega estimada: Av. 16 de Julio (El Prado), La Paz.`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/59165638340?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
